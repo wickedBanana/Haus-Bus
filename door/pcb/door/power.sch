@@ -1,0 +1,179 @@
+EESchema Schematic File Version 4
+LIBS:door-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Regulator_Linear:LM1117-3.3 U1
+U 1 1 5BE808CF
+P 5050 3000
+F 0 "U1" H 5050 3242 50  0000 C CNN
+F 1 "LM1117-3.3" H 5050 3151 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223" H 5050 3000 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm1117.pdf" H 5050 3000 50  0001 C CNN
+	1    5050 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:USB_B_Micro J1
+U 1 1 5BE809FE
+P 3600 3200
+F 0 "J1" H 3655 3667 50  0000 C CNN
+F 1 "USB_B_Micro" H 3655 3576 50  0000 C CNN
+F 2 "Connector_USB:USB_Micro-B_Amphenol_10103594-0001LF_Horizontal" H 3750 3150 50  0001 C CNN
+F 3 "~" H 3750 3150 50  0001 C CNN
+	1    3600 3200
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3900 3200
+NoConn ~ 3900 3300
+NoConn ~ 3900 3400
+$Comp
+L power:GND #PWR0101
+U 1 1 5BE80D93
+P 3550 3900
+F 0 "#PWR0101" H 3550 3650 50  0001 C CNN
+F 1 "GND" H 3555 3727 50  0000 C CNN
+F 2 "" H 3550 3900 50  0001 C CNN
+F 3 "" H 3550 3900 50  0001 C CNN
+	1    3550 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3500 3600 3550 3600
+Connection ~ 3550 3600
+Wire Wire Line
+	3550 3600 3600 3600
+$Comp
+L power:+3.3V #PWR0102
+U 1 1 5BE80E9E
+P 5900 3000
+F 0 "#PWR0102" H 5900 2850 50  0001 C CNN
+F 1 "+3.3V" H 5915 3173 50  0000 C CNN
+F 2 "" H 5900 3000 50  0001 C CNN
+F 3 "" H 5900 3000 50  0001 C CNN
+	1    5900 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0103
+U 1 1 5BE80EEB
+P 5050 3850
+F 0 "#PWR0103" H 5050 3600 50  0001 C CNN
+F 1 "GND" H 5055 3677 50  0000 C CNN
+F 2 "" H 5050 3850 50  0001 C CNN
+F 3 "" H 5050 3850 50  0001 C CNN
+	1    5050 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5BE810F5
+P 4150 3300
+F 0 "R1" H 4220 3346 50  0000 L CNN
+F 1 "250" H 4220 3255 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4080 3300 50  0001 C CNN
+F 3 "~" H 4150 3300 50  0001 C CNN
+	1    4150 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 3150 4150 3000
+Wire Wire Line
+	3900 3000 4000 3000
+Connection ~ 4150 3000
+$Comp
+L Device:C C1
+U 1 1 5BE81E66
+P 4600 3350
+F 0 "C1" H 4715 3396 50  0000 L CNN
+F 1 "10uF" H 4715 3305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4638 3200 50  0001 C CNN
+F 3 "~" H 4600 3350 50  0001 C CNN
+	1    4600 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 5BE81F8E
+P 5700 3350
+F 0 "C2" H 5815 3396 50  0000 L CNN
+F 1 "100uF" H 5815 3305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5738 3200 50  0001 C CNN
+F 3 "~" H 5700 3350 50  0001 C CNN
+	1    5700 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 3000 4600 3000
+Wire Wire Line
+	5050 3300 5050 3750
+Wire Wire Line
+	4600 3000 4600 3200
+Connection ~ 4600 3000
+Wire Wire Line
+	4600 3000 4750 3000
+Wire Wire Line
+	4600 3500 4600 3750
+Wire Wire Line
+	4600 3750 5050 3750
+Connection ~ 5050 3750
+Wire Wire Line
+	5050 3750 5050 3850
+Wire Wire Line
+	5350 3000 5700 3000
+Wire Wire Line
+	5700 3000 5700 3200
+Wire Wire Line
+	5700 3500 5700 3750
+Wire Wire Line
+	5700 3750 5050 3750
+Wire Wire Line
+	5900 3000 5700 3000
+Connection ~ 5700 3000
+Wire Wire Line
+	3550 3600 3550 3750
+$Comp
+L Device:LED D1
+U 1 1 5BE80F7F
+P 4150 3600
+F 0 "D1" V 4188 3483 50  0000 R CNN
+F 1 "Power" V 4097 3483 50  0000 R CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 4150 3600 50  0001 C CNN
+F 3 "~" H 4150 3600 50  0001 C CNN
+	1    4150 3600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4150 3750 3550 3750
+Connection ~ 3550 3750
+Wire Wire Line
+	3550 3750 3550 3900
+$Comp
+L power:+5V #PWR0111
+U 1 1 5BEBF68D
+P 4000 2850
+F 0 "#PWR0111" H 4000 2700 50  0001 C CNN
+F 1 "+5V" H 4015 3023 50  0000 C CNN
+F 2 "" H 4000 2850 50  0001 C CNN
+F 3 "" H 4000 2850 50  0001 C CNN
+	1    4000 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4000 2850 4000 3000
+Connection ~ 4000 3000
+Wire Wire Line
+	4000 3000 4150 3000
+$EndSCHEMATC

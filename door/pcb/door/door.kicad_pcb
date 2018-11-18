@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 24)
+    (drawings 25)
     (tracks 336)
     (zones 0)
     (modules 42)
@@ -661,7 +661,7 @@
     (tags diode)
     (path /5BE80860/5BE80F7F)
     (attr smd)
-    (fp_text reference D1 (at 0 -1.82 270) (layer F.SilkS)
+    (fp_text reference D1 (at -0.124 -2.159 270) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value Power (at 0 1.82 270) (layer F.Fab)
@@ -2085,6 +2085,9 @@
     )
   )
 
+  (gr_text PWR (at 156.591 92.964 90) (layer F.SilkS)
+    (effects (font (size 0.8 0.8) (thickness 0.1)))
+  )
   (gr_text NRST (at 201.6125 119.761) (layer F.SilkS) (tstamp 5BFBB4AA)
     (effects (font (size 0.8 0.8) (thickness 0.1)))
   )

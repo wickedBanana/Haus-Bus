@@ -36,7 +36,7 @@
 #include "stm32f3xx_it.h"
 
 /* USER CODE BEGIN 0 */
-
+extern uartType myUart;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -227,7 +227,18 @@ void CAN_RX1_IRQHandler(void)
 void USART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART1_IRQn 0 */
-
+	if(USART1->ISR & 1<<5){
+			char rdr = USART1->RDR;
+			HAL_UART_Transmit(&huart1, &rdr,1,10);
+			if(rdr == '\r'){
+				myUart.buffer[myUart.pointer] = 0;
+				myUart.pointer = 0;
+				myUart.cmdFlag = 1;
+				HAL_UART_Transmit(&huart1, "\r\n", sizeof("\n\r"),10);
+			}
+			else{
+				myUart.buffer[myUart.pointer++] = rdr;
+			}
   /* USER CODE END USART1_IRQn 0 */
   HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */

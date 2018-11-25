@@ -70,7 +70,16 @@
 /* #define USE_FULL_ASSERT    1U */
 
 /* USER CODE BEGIN Private defines */
+#define BUFFER_SIZE 1024
 
+typedef struct {
+	char buffer[BUFFER_SIZE];
+	unsigned int pointer;
+	volatile unsigned char cmdFlag;
+}uartType;
+
+
+uartType myUart;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -110,8 +110,6 @@ F 3 "" H 5200 2500 50  0001 C CNN
 	1    5200 2500
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5200 2600 5200 2500
 NoConn ~ 4600 3200
 Wire Wire Line
 	5500 3200 6750 3200
@@ -153,4 +151,37 @@ Text Label 5750 3500 0    50   ~ 0
 2B
 Text Label 4000 2900 0    50   ~ 0
 reset
+$Comp
+L Device:CP1_Small C10
+U 1 1 5BF3360F
+P 5550 2550
+F 0 "C10" V 5778 2550 50  0000 C CNN
+F 1 "100uF" V 5687 2550 50  0000 C CNN
+F 2 "" H 5550 2550 50  0001 C CNN
+F 3 "~" H 5550 2550 50  0001 C CNN
+	1    5550 2550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5200 2500 5200 2550
+Wire Wire Line
+	5200 2550 5450 2550
+Connection ~ 5200 2550
+Wire Wire Line
+	5200 2550 5200 2600
+Wire Wire Line
+	5650 2550 5950 2550
+Wire Wire Line
+	5950 2550 5950 2350
+$Comp
+L power:GND #PWR021
+U 1 1 5BF33CC8
+P 5950 2350
+F 0 "#PWR021" H 5950 2100 50  0001 C CNN
+F 1 "GND" H 5955 2177 50  0000 C CNN
+F 2 "" H 5950 2350 50  0001 C CNN
+F 3 "" H 5950 2350 50  0001 C CNN
+	1    5950 2350
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC

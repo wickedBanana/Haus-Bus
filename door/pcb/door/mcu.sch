@@ -474,13 +474,9 @@ Wire Wire Line
 Wire Wire Line
 	9100 2300 9650 2300
 Wire Wire Line
-	8350 1950 9100 1950
-Wire Wire Line
 	9100 2850 9100 2500
 Wire Wire Line
 	9100 2500 9650 2500
-Wire Wire Line
-	8350 2850 9100 2850
 Wire Wire Line
 	9650 2800 9650 3000
 Wire Wire Line
@@ -778,7 +774,7 @@ U 1 1 5BED1C16
 P 6550 2650
 F 0 "TP2" V 6745 2724 50  0000 C CNN
 F 1 "TP_CAN_RX" V 6654 2724 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded" H 6750 2650 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6750 2650 50  0001 C CNN
 F 3 "~" H 6750 2650 50  0001 C CNN
 	1    6550 2650
 	0    -1   -1   0   
@@ -794,7 +790,7 @@ U 1 1 5BED4539
 P 6500 2050
 F 0 "TP1" V 6695 2124 50  0000 C CNN
 F 1 "TP_CAN_TX" V 6604 2124 50  0000 C CNN
-F 2 "TestPoint:TestPoint_Loop_D1.80mm_Drill1.0mm_Beaded" H 6700 2050 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6700 2050 50  0001 C CNN
 F 3 "~" H 6700 2050 50  0001 C CNN
 	1    6500 2050
 	0    -1   -1   0   
@@ -874,4 +870,8 @@ NoConn ~ 3200 4900
 NoConn ~ 3600 4900
 NoConn ~ 2950 1300
 NoConn ~ 3350 1300
+Wire Wire Line
+	8350 1950 9100 1950
+Wire Wire Line
+	8350 2850 9100 2850
 $EndSCHEMATC

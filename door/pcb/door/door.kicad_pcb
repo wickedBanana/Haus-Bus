@@ -645,6 +645,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model "/home/erik/Downloads/d-sub-9-polig-print.snapshot.7/D Sub 9 polig Print.STEP"
+      (offset (xyz -5.5 -9.5 6.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
+    )
   )
 
   (module LED_SMD:LED_1206_3216Metric (layer F.Cu) (tedit 5B301BBE) (tstamp 5BF52540)
@@ -1666,7 +1671,7 @@
     )
   )
 
-  (module TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal (layer F.Cu) (tedit 5B294EBC) (tstamp 5BF7C4C2)
+  (module TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal (layer F.Cu) (tedit 5B294EBC) (tstamp 5C10D449)
     (at 150.114 98.806 270)
     (descr "Terminal Block Phoenix MKDS-1,5-2-5.08, 2 pins, pitch 5.08mm, size 10.2x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix")
     (tags "THT Terminal Block Phoenix MKDS-1,5-2-5.08 pitch 5.08mm size 10.2x9.8mm^2 drill 1.3mm pad 2.6mm")
@@ -1726,9 +1731,14 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model /home/erik/Downloads/terminal-block-connector-1.snapshot.7/WURTH_691216510002.STEP
+      (offset (xyz 2.5 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 180))
+    )
   )
 
-  (module TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal (layer F.Cu) (tedit 5B294EBC) (tstamp 5C0BB072)
+  (module TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal (layer F.Cu) (tedit 5B294EBC) (tstamp 5C10D1B7)
     (at 150.114 87.122 270)
     (descr "Terminal Block Phoenix MKDS-1,5-2-5.08, 2 pins, pitch 5.08mm, size 10.2x9.8mm^2, drill diamater 1.3mm, pad diameter 2.6mm, see http://www.farnell.com/datasheets/100425.pdf, script-generated using https://github.com/pointhi/kicad-footprint-generator/scripts/TerminalBlock_Phoenix")
     (tags "THT Terminal Block Phoenix MKDS-1,5-2-5.08 pitch 5.08mm size 10.2x9.8mm^2 drill 1.3mm pad 2.6mm")
@@ -1787,6 +1797,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model /home/erik/Downloads/terminal-block-connector-1.snapshot.7/WURTH_691216510002.STEP
+      (offset (xyz 2.5 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 180))
     )
   )
 
@@ -2017,7 +2032,7 @@
     )
   )
 
-  (module Connector_BarrelJack:BarrelJack_Wuerth_6941xx301002 (layer F.Cu) (tedit 5B191DE1) (tstamp 5C0B7544)
+  (module Connector_BarrelJack:BarrelJack_Wuerth_6941xx301002 (layer F.Cu) (tedit 5B191DE1) (tstamp 5C10D6DA)
     (at 104.14 109.982 270)
     (descr "Wuerth electronics barrel jack connector (5.5mm outher diameter, inner diameter 2.05mm or 2.55mm depending on exact order number), See: http://katalog.we-online.de/em/datasheet/6941xx301002.pdf")
     (tags "connector barrel jack")
@@ -2059,9 +2074,14 @@
     (pad 1 thru_hole rect (at 0 0 270) (size 4.4 1.8) (drill oval 3.4 0.8) (layers *.Cu *.Mask)
       (net 70 +9V))
     (model ${KISYS3DMOD}/Connector_BarrelJack.3dshapes/BarrelJack_Wuerth_6941xx301002.wrl
-      (at (xyz 0 0 0))
+      (offset (xyz 8 1 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model /home/erik/Downloads/ej503b-connector-1.snapshot.2/EJ503B-ND.stp
+      (offset (xyz -4.5 -14 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 90))
     )
   )
 
@@ -2546,15 +2566,15 @@
   (segment (start 112.028 108.916) (end 117.734 108.916) (width 0.825) (layer F.Cu) (net 70))
   (segment (start 104.14 109.982) (end 104.14 108.682) (width 0.825) (layer F.Cu) (net 70))
   (segment (start 112.028 108.666) (end 112.028 108.916) (width 0.825) (layer F.Cu) (net 70))
-  (segment (start 112.028 105.932) (end 112.028 108.916) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 110.744 104.648) (end 112.028 105.932) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 106.649 104.648) (end 110.744 104.648) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 104.14 109.982) (end 104.14 107.157) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 104.14 107.157) (end 106.649 104.648) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 120.805 111.512) (end 123.698 108.619) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 119.38 111.512) (end 120.805 111.512) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 123.698 103.378) (end 124.968 102.108) (width 0.625) (layer F.Cu) (net 70))
-  (segment (start 123.698 108.619) (end 123.698 103.378) (width 0.625) (layer F.Cu) (net 70))
+  (segment (start 112.028 105.932) (end 112.028 108.916) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 110.744 104.648) (end 112.028 105.932) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 106.649 104.648) (end 110.744 104.648) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 104.14 109.982) (end 104.14 107.157) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 104.14 107.157) (end 106.649 104.648) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 120.805 111.512) (end 123.698 108.619) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 119.38 111.512) (end 120.805 111.512) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 123.698 103.378) (end 124.968 102.108) (width 0.825) (layer F.Cu) (net 70))
+  (segment (start 123.698 108.619) (end 123.698 103.378) (width 0.825) (layer F.Cu) (net 70))
 
   (zone (net 1) (net_name GND) (layer B.Cu) (tstamp 5C02FBFC) (hatch edge 0.508)
     (connect_pads (clearance 0.1524))

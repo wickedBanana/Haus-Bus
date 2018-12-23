@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 25)
+    (drawings 28)
     (tracks 394)
     (zones 0)
     (modules 43)
@@ -2157,6 +2157,15 @@
       (net 48 CAN_RX))
   )
 
+  (gr_text TX (at 113.919 78.994 90) (layer F.SilkS)
+    (effects (font (size 0.8 0.8) (thickness 0.1)))
+  )
+  (gr_text RX (at 113.919 81.407 90) (layer F.SilkS)
+    (effects (font (size 0.8 0.8) (thickness 0.1)))
+  )
+  (gr_text GND (at 113.919 83.947 90) (layer F.SilkS)
+    (effects (font (size 0.8 0.8) (thickness 0.1)))
+  )
   (gr_text "door V0.2" (at 124.46 93.472) (layer B.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify mirror))
   )

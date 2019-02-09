@@ -55,8 +55,8 @@
 #define LED2_GPIO_Port GPIOA
 #define SW1_Pin GPIO_PIN_15
 #define SW1_GPIO_Port GPIOB
-#define STEP_Pin GPIO_PIN_6
-#define STEP_GPIO_Port GPIOB
+#define STEPP_Pin GPIO_PIN_6
+#define STEPP_GPIO_Port GPIOB
 #define SLEEP_Pin GPIO_PIN_7
 #define SLEEP_GPIO_Port GPIOB
 #define DIR_Pin GPIO_PIN_8

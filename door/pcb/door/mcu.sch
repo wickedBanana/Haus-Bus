@@ -459,41 +459,6 @@ STEP
 Text GLabel 4000 3600 0    50   Output ~ 0
 SLEEP
 $Comp
-L Connector:DB9_Female_MountingHoles J3
-U 1 1 5BE8AC5C
-P 9950 2400
-F 0 "J3" H 10130 2403 50  0000 L CNN
-F 1 "DB9_Female_MountingHoles" H 10130 2312 50  0000 L CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 9950 2400 50  0001 C CNN
-F 3 " ~" H 9950 2400 50  0001 C CNN
-	1    9950 2400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9100 1950 9100 2300
-Wire Wire Line
-	9100 2300 9650 2300
-Wire Wire Line
-	9100 2850 9100 2500
-Wire Wire Line
-	9100 2500 9650 2500
-Wire Wire Line
-	9650 2800 9650 3000
-Wire Wire Line
-	9650 3000 9950 3000
-$Comp
-L power:GND #PWR015
-U 1 1 5BE8E40E
-P 9950 3000
-F 0 "#PWR015" H 9950 2750 50  0001 C CNN
-F 1 "GND" H 9955 2827 50  0000 C CNN
-F 2 "" H 9950 3000 50  0001 C CNN
-F 3 "" H 9950 3000 50  0001 C CNN
-	1    9950 3000
-	1    0    0    -1  
-$EndComp
-Connection ~ 9950 3000
-$Comp
 L power:VDD #PWR017
 U 1 1 5BE8EDFA
 P 6800 5300
@@ -762,12 +727,10 @@ Wire Wire Line
 Connection ~ 8750 5400
 Wire Wire Line
 	8750 5400 8750 5450
-NoConn ~ 9650 2700
 NoConn ~ 9650 2600
 NoConn ~ 9650 2400
 NoConn ~ 9650 2200
 NoConn ~ 9650 2100
-NoConn ~ 9650 2000
 $Comp
 L Connector:TestPoint TP2
 U 1 1 5BED1C16
@@ -872,6 +835,47 @@ NoConn ~ 2950 1300
 NoConn ~ 3350 1300
 Wire Wire Line
 	8350 1950 9100 1950
+$Comp
+L Connector:DB9_Female_MountingHoles J3
+U 1 1 5BE8AC5C
+P 9950 2400
+F 0 "J3" H 10130 2403 50  0000 L CNN
+F 1 "DB9_Female_MountingHoles" H 10130 2312 50  0000 L CNN
+F 2 "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 9950 2400 50  0001 C CNN
+F 3 " ~" H 9950 2400 50  0001 C CNN
+	1    9950 2400
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	8350 2850 9100 2850
+	9650 2850 9650 2800
+Wire Wire Line
+	8350 2850 9650 2850
+Wire Wire Line
+	9650 2700 9100 2700
+Wire Wire Line
+	9100 1950 9100 2700
+NoConn ~ 9650 2300
+NoConn ~ 9650 2500
+$Comp
+L door-cache:power_GND #PWR?
+U 1 1 5C5FE0A1
+P 9650 1800
+F 0 "#PWR?" H 9650 1550 50  0001 C CNN
+F 1 "power_GND" H 9655 1627 50  0000 C CNN
+F 2 "" H 9650 1800 50  0001 C CNN
+F 3 "" H 9650 1800 50  0001 C CNN
+	1    9650 1800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9650 1800 9650 1850
+Wire Wire Line
+	9950 3000 10200 3000
+Wire Wire Line
+	10200 3000 10200 1850
+Wire Wire Line
+	10200 1850 9650 1850
+Connection ~ 9650 1850
+Wire Wire Line
+	9650 1850 9650 2000
 $EndSCHEMATC

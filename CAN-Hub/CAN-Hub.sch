@@ -20,7 +20,7 @@ U 1 1 5C5EB1FC
 P 2500 2550
 F 0 "J1" V 2817 2507 50  0000 C CNN
 F 1 "DB9_Male_MountingHoles" V 2726 2507 50  0000 C CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 2500 2550 50  0001 C CNN
+F 2 "Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles" H 2500 2550 50  0001 C CNN
 F 3 " ~" H 2500 2550 50  0001 C CNN
 	1    2500 2550
 	0    -1   -1   0   
@@ -31,7 +31,7 @@ U 1 1 5C5EB24F
 P 5200 2550
 F 0 "J3" V 5517 2507 50  0000 C CNN
 F 1 "DB9_Male_MountingHoles" V 5426 2507 50  0000 C CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 5200 2550 50  0001 C CNN
+F 2 "Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles" H 5200 2550 50  0001 C CNN
 F 3 " ~" H 5200 2550 50  0001 C CNN
 	1    5200 2550
 	0    -1   -1   0   
@@ -42,7 +42,7 @@ U 1 1 5C5EB271
 P 7850 2550
 F 0 "J5" V 8167 2507 50  0000 C CNN
 F 1 "DB9_Male_MountingHoles" V 8076 2507 50  0000 C CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 7850 2550 50  0001 C CNN
+F 2 "Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles" H 7850 2550 50  0001 C CNN
 F 3 " ~" H 7850 2550 50  0001 C CNN
 	1    7850 2550
 	0    -1   -1   0   
@@ -53,7 +53,7 @@ U 1 1 5C5EB297
 P 6550 2550
 F 0 "J4" V 6867 2507 50  0000 C CNN
 F 1 "DB9_Male_MountingHoles" V 6776 2507 50  0000 C CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 6550 2550 50  0001 C CNN
+F 2 "Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles" H 6550 2550 50  0001 C CNN
 F 3 " ~" H 6550 2550 50  0001 C CNN
 	1    6550 2550
 	0    -1   -1   0   
@@ -64,7 +64,7 @@ U 1 1 5C5EB2BF
 P 3900 2550
 F 0 "J2" V 4200 2500 50  0000 L CNN
 F 1 "DB9_Male_MountingHoles" V 4100 2100 50  0000 L CNN
-F 2 "Connector_Dsub:DSUB-9_Female_Horizontal_P2.77x2.84mm_EdgePinOffset4.94mm_Housed_MountingHolesOffset7.48mm" H 3900 2550 50  0001 C CNN
+F 2 "Connector_Dsub:DSUB-9_Female_Vertical_P2.77x2.84mm_MountingHoles" H 3900 2550 50  0001 C CNN
 F 3 " ~" H 3900 2550 50  0001 C CNN
 	1    3900 2550
 	0    -1   -1   0   

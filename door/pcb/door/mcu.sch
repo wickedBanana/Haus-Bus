@@ -229,14 +229,12 @@ $EndComp
 Wire Wire Line
 	6000 4200 5700 4200
 Wire Wire Line
-	6000 4300 5700 4300
-Wire Wire Line
 	6700 2200 6800 2200
 Wire Wire Line
 	6700 2300 6800 2300
 Text GLabel 6000 4200 2    50   Output ~ 0
 CAN_TX
-Text GLabel 6000 4300 2    50   Input ~ 0
+Text GLabel 6000 4100 2    50   Input ~ 0
 CAN_RX
 Text Label 5750 4200 0    50   ~ 0
 PA12
@@ -440,11 +438,9 @@ F 3 "" H 4400 5300 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6000 4400 5700 4400
-Wire Wire Line
-	6000 4500 5700 4500
 Text GLabel 6000 4400 2    50   Input ~ 0
 SWCLK
-Text GLabel 6000 4500 2    50   BiDi ~ 0
+Text GLabel 6000 4300 2    50   BiDi ~ 0
 SWIDO
 Wire Wire Line
 	4000 3300 4400 3300
@@ -808,7 +804,6 @@ NoConn ~ 5700 3300
 NoConn ~ 5700 3600
 NoConn ~ 5700 3700
 NoConn ~ 5700 3800
-NoConn ~ 5700 4100
 Wire Wire Line
 	3200 5000 3200 5450
 $Comp
@@ -878,4 +873,11 @@ Wire Wire Line
 Connection ~ 9650 1850
 Wire Wire Line
 	9650 1850 9650 2000
+Wire Wire Line
+	5700 4100 6000 4100
+Wire Wire Line
+	5700 4300 6000 4300
+NoConn ~ 5700 4500
+Text Label 5750 4400 0    50   ~ 0
+PA14
 $EndSCHEMATC

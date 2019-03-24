@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -41,23 +41,28 @@
 #include "stm32f3xx_hal.h"
 
 /* USER CODE BEGIN Includes */
+#include <math.h>
+#include "pin.h"
+#define SINE_VALUES 400
+#define PI 3.14159265
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 CAN_HandleTypeDef hcan;
 
-IWDG_HandleTypeDef hiwdg;
+DAC_HandleTypeDef hdac;
 
 TIM_HandleTypeDef htim1;
-TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-uint8_t dir = 0;
-volatile int stepp = 0;
-uint8_t speed = 0;
 /* Private variables ---------------------------------------------------------*/
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
 
 /* USER CODE END PV */
 
@@ -67,17 +72,17 @@ static void MX_GPIO_Init(void);
 static void MX_CAN_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM1_Init(void);
-static void MX_IWDG_Init(void);
-static void MX_TIM4_Init(void);
-
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-                                
+static void MX_DAC_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 
 /* USER CODE END PFP */
+#ifdef __cplusplus
 
+}
+
+#endif
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
@@ -114,38 +119,36 @@ int main(void)
   MX_CAN_Init();
   MX_USART1_UART_Init();
   MX_TIM1_Init();
-  MX_IWDG_Init();
-  MX_TIM4_Init();
+  MX_DAC_Init();
   /* USER CODE BEGIN 2 */
-  MX_TIM1_Init();
-  USART1->CR1 |= 1<<5;  //RXNE Interrupt Bit setzen
-  HAL_TIM_Base_Start_IT(&htim1);
+  HAL_DAC_Init(&hdac);
+  HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
+
+  uint16_t sinTable[SINE_VALUES];
+  uint16_t value;
+  Gpio gpioA(GPIOA);
+  Pin led(&gpioA, LED2_Pin);
+  led.out();
+
+  for (int i = 0; i < SINE_VALUES; i++){
+    value = (uint16_t)rint((sin(i*((2*PI)/SINE_VALUES))+1.1)*1500);
+    sinTable[i] = value < 4096 ? value : 4095;
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int i = 0;
   while (1)
   {
-	  if(myUart.cmdFlag){
-	  			sscanf(myUart.buffer,"%dd%ds%d", &stepp, &dir, &speed);
-	  			stepp = (float)((200.0/360.0)*stepp*3.83+0.5);
-	  			stepp *= 2;
 
-	  			switch(speed){
-	  			case 1:
-	  				TIM1->ARR = 2499;
-	  				break;
-	  			case 2:
-	  				TIM1->ARR = 4999;
-	  				break;
-	  			default:
-	  				break;
-	  			}
-	  			(dir == 0)?(GPIOA->ODR &= ~DIR_Pin):(GPIOA->ODR |= DIR_Pin);
-	  			myUart.cmdFlag = 0;
-	  		}
-	  		(stepp > 0)?(GPIOA->ODR |= GPIO_PIN_9):(GPIOA->ODR &= ~GPIO_PIN_9);			//Treiber-IC in sleep mode versetzen, wenn motor auf Position
-
+      
+      //HAL_DAC_SetValue(&hdac, DAC_CHANNEL_1, DAC_ALIGN_12B_R, (uint16_t) sinTable[i]);
+      HAL_Delay(500);
+     // GPIOA->ODR ^= LED2_Pin;
+      led.toggle();
+      i++;
+      if(i == SINE_VALUES) i = 0;
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -168,11 +171,10 @@ void SystemClock_Config(void)
 
     /**Initializes the CPU, AHB and APB busses clocks 
     */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
@@ -238,15 +240,25 @@ static void MX_CAN_Init(void)
 
 }
 
-/* IWDG init function */
-static void MX_IWDG_Init(void)
+/* DAC init function */
+static void MX_DAC_Init(void)
 {
 
-  hiwdg.Instance = IWDG;
-  hiwdg.Init.Prescaler = IWDG_PRESCALER_4;
-  hiwdg.Init.Window = 4095;
-  hiwdg.Init.Reload = 4095;
-  if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
+  DAC_ChannelConfTypeDef sConfig;
+
+    /**DAC Initialization 
+    */
+  hdac.Instance = DAC;
+  if (HAL_DAC_Init(&hdac) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+    /**DAC channel OUT1 config 
+    */
+  sConfig.DAC_Trigger = DAC_TRIGGER_NONE;
+  sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_ENABLE;
+  if (HAL_DAC_ConfigChannel(&hdac, &sConfig, DAC_CHANNEL_1) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
@@ -285,44 +297,6 @@ static void MX_TIM1_Init(void)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
-
-}
-
-/* TIM4 init function */
-static void MX_TIM4_Init(void)
-{
-
-  TIM_MasterConfigTypeDef sMasterConfig;
-  TIM_OC_InitTypeDef sConfigOC;
-
-  htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 16;
-  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 8999;
-  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_PWM_Init(&htim4) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-  sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_LOW;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-  HAL_TIM_MspPostInit(&htim4);
 
 }
 
@@ -368,7 +342,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LED1_Pin|LED2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SLEEP_Pin|DIR_Pin, GPIO_PIN_RESET);
@@ -387,12 +361,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LED1_Pin LED2_Pin */
-  GPIO_InitStruct.Pin = LED1_Pin|LED2_Pin;
+  /*Configure GPIO pin : LED2_Pin */
+  GPIO_InitStruct.Pin = LED2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(LED2_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB0 PB1 PB2 PB10 
                            PB11 PB12 PB13 PB14 
@@ -404,11 +378,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : SW1_Pin */
-  GPIO_InitStruct.Pin = SW1_Pin;
+  /*Configure GPIO pins : SW1_Pin STEP_Pin */
+  GPIO_InitStruct.Pin = SW1_Pin|STEP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(SW1_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SLEEP_Pin DIR_Pin */
   GPIO_InitStruct.Pin = SLEEP_Pin|DIR_Pin;
@@ -435,8 +409,6 @@ void _Error_Handler(char *file, int line)
   /* User can add his own implementation to report the HAL error return state */
   while(1)
   {
-	  GPIOA->ODR ^= LED1_Pin;
-	  HAL_Delay(100);
   }
   /* USER CODE END Error_Handler_Debug */
 }

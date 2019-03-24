@@ -10,7 +10,7 @@
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2019 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -49,14 +49,12 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define LED1_Pin GPIO_PIN_4
-#define LED1_GPIO_Port GPIOA
 #define LED2_Pin GPIO_PIN_5
 #define LED2_GPIO_Port GPIOA
 #define SW1_Pin GPIO_PIN_15
 #define SW1_GPIO_Port GPIOB
-#define STEPP_Pin GPIO_PIN_6
-#define STEPP_GPIO_Port GPIOB
+#define STEP_Pin GPIO_PIN_6
+#define STEP_GPIO_Port GPIOB
 #define SLEEP_Pin GPIO_PIN_7
 #define SLEEP_GPIO_Port GPIOB
 #define DIR_Pin GPIO_PIN_8
@@ -70,16 +68,7 @@
 /* #define USE_FULL_ASSERT    1U */
 
 /* USER CODE BEGIN Private defines */
-#define BUFFER_SIZE 1024
 
-typedef struct {
-	char buffer[BUFFER_SIZE];
-	unsigned int pointer;
-	volatile unsigned char cmdFlag;
-}uartType;
-
-
-uartType myUart;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
